@@ -11,7 +11,7 @@ return(
           <Modal.Title>{props.chosenMovie.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <img src={props.chosenMovie.poster_path} alt='Movie Image'/>
+            <img width= '100%' src={`https://image.tmdb.org/t/p/w500${props.chosenMovie.poster_path}` } />
             <Form.Control type="text" placeholder="Enter Your Comment" />
             </Modal.Body>
         <Modal.Footer>
