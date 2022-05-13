@@ -1,36 +1,37 @@
 import MovieList from './MovieList';
 import { useEffect } from "react";
 import { useState } from "react";
-
+// import "./style.css"
 
 function Home() {
-    const [data, setdata] = useState();
 
-    const fetchData = async () => {
-        try {
-            const respons= await fetch(` https://movie-js02.herokuapp.com/trending`)
-           
-            
+    const [data, setdata] = useState([]);
 
+    const getData = async () => {
+        
+            const respons= await fetch('https://movie-js02.herokuapp.com/trending')
             const rRender = await respons.json();
           
             setdata(rRender)
            
-            console.log("shams",rRender)
+            
 
-        } catch (error) {
-            console.log("error", error);
-        }
+         
 
     }
-    useEffect(() => { fetchData(); }, [])
+    useEffect(() => {
+        getData();
+    } , [])
 
 
     return (
         <>
-            <p>Home</p>
+            <h1>Netflix Clone</h1>
+            {
+               (data.length>0) && <MovieList movie={data}/>
+            }
 
-            <MovieList mData={data}/>
+            
         </>
     )
 }
