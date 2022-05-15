@@ -1,3 +1,4 @@
+import { Button, Row, Container } from 'react-bootstrap';
 import MovieList from './MovieList';
 import { useEffect } from "react";
 import { useState } from "react";
@@ -16,7 +17,18 @@ function Home() {
            
             
 
-         
+    }
+    function updateMovie(newMovie, id) {
+        let updateMovie = data.map((data) => {
+            if (data.id === id) {
+                data.comment = newMovie.userComment;
+                return data;
+            } else {
+                return data;
+            }
+        })
+
+        setdata(updateMovie);
 
     }
     useEffect(() => {
@@ -28,7 +40,7 @@ function Home() {
         <>
             <h1>Netflix Clone</h1>
             {
-               (data.length>0) && <MovieList movie={data}/>
+               (data.length>0) && <MovieList movie={data} updateMovie={updateMovie}/>
             }
 
             
